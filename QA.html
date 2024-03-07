@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Game by Ash</title>
+
+<link rel="stylesheet"   href="style.css"    >
+<link rel="icon" href="images/Ash.png">
+
+
+
+
+
+</head>
+<body background="images/background.jpg"  >
+
+
+       
+
+<h1 style="color: white ;  position:relative; top: 490px;   left: 70px;       ">Quiz Game by Ash </h1>
+
+<p    style="color: white ;  position:relative; top: 510px;   left: 90px;       "             >Enter the number of questions:</p>
+
+<input    style="  position:relative; top: 520px;   left: 90px;       "                       type="number" id="numQuestions">
+<button    style="  position:relative; top: 520px;   left: 90px;       "     onclick="startQuiz()">        Start Quiz</button>
+
+
+
+
+
+
+
+<div  style="color: white ;     position: relative;   left: 25px;   "             id="quiz"></div>
+
+<script>
+function startQuiz() {
+    var numQuestions = document.getElementById("numQuestions").value;
+    var quizContent = "";
+
+    for (var i = 0; i < numQuestions; i++) {
+        var question = prompt("Enter question " + (i+1));
+        var answer = prompt("Enter the answer to question " + (i+1));
+        saveQuestionAnswer(question, answer);
+        quizContent += "<p>Question " + (i+1) + ": " + question + "</p>";
+        quizContent += "<button onclick='checkAnswer(\"" + answer + "\", " + i + ")'>Answer</button>";
+    }
+
+    document.getElementById("quiz").innerHTML = quizContent;
+}
+
+function checkAnswer(correctAnswer, questionNumber) {
+    var userAnswer = prompt("Enter your answer to question " + (questionNumber + 1));
+
+    if (userAnswer.toLowerCase() === correctAnswer.toLowerCase()) {
+        alert("Correct!");
+        updateScore();
+        playSound("correct.mp3");
+    } else {
+        alert("Incorrect. The correct answer is: " + correctAnswer);
+        playSound("incorrect.mp3");
+    }
+}
+
+function playSound(soundFile) {
+    var audio = new Audio(soundFile);
+    audio.play();
+}
+
+function updateScore() {
+    var score = parseInt(localStorage.getItem("score")) || 0;
+    score++;
+    localStorage.setItem("score", score);
+    alert("Your current score: " + score);
+}
+
+function saveQuestionAnswer(question, answer) {
+    var questionsAnswers = JSON.parse(localStorage.getItem("questionsAnswers")) || [];
+    questionsAnswers.push({question: question, answer: answer});
+    localStorage.setItem("questionsAnswers", JSON.stringify(questionsAnswers));
+}
+
+function displayQuestionsAnswers() {
+    var questionsAnswers = JSON.parse(localStorage.getItem("questionsAnswers")) || [];
+    var quizContent = "";
+
+    questionsAnswers.forEach(function(item, index) {
+        quizContent += "<p>Question " + (index+1) + ": " + item.question + " - Answer: " + item.answer + "</p>";
+        quizContent += "<button onclick='deleteQuestion(" + index + ")'>Delete</button>";
+    });
+
+    document.getElementById("quiz").innerHTML = quizContent;
+}
+
+function deleteQuestion(index) {
+    var questionsAnswers = JSON.parse(localStorage.getItem("questionsAnswers")) || [];
+    questionsAnswers.splice(index, 1);
+    localStorage.setItem("questionsAnswers", JSON.stringify(questionsAnswers));
+    displayQuestionsAnswers();
+}
+</script>
+
+<button  style="  position:relative; top: 535px;   left: 90px;       "                            onclick="displayQuestionsAnswers()">Show Questions & Answers</button>
+
+</body>
+</html>

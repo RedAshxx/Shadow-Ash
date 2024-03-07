@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>  
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/Ash.png">
+    <title> Secutity Page </title>
+
+    <link rel="stylesheet"   href="style.css"    >
+
+<style>
+        
+        #btn {
+          padding: 10px 20px;
+          background-color: black;
+          color: #fff;
+          border: none;
+          border-radius: 5px;
+          cursor: pointer;
+          transition: background-color 0.3s ease;
+          height: 50px;
+          width: 200px;
+          font-style: italic;
+          box-sizing: border-box;
+          border: 2px solid #007bff; /* Add border to button */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+
+        }
+        
+      
+        /* Hover effect */
+        #btn:hover {
+          background-color: #0056b3;
+        }
+      </style>
+
+
+
+
+
+
+
+
+
+</head>
+
+<script> alert("Welcome to the Security  page of The Application By Ash");   </script>
+
+
+<body background="images/background.jpg" >
+    
+
+
+
+<center>  
+    <h1 style="  position: relative; color: white; top: 200px;  right: -30px; " > Welcome to Black Ash Websites
+      
+    </h1>
+    
+    <p style="  position: relative; color: white; top: 200px;  right: -30px; "  > Please input the Black  <br>Id Number that program by Ash</p>
+    
+    
+   
+    <input type="text" id="codeInput"  style="position: relative;  top: 200px;  left: 130px;      "          >
+    <button onclick="checkCode()"      id="btn" style="position: relative;  top: 290px; left:-60px       "             > Submit</button>
+
+    <script>
+        function checkCode() {
+            var enteredCode = document.getElementById("codeInput").value;
+            var correctCode = "2005"; // Change this to your desired code
+
+            if (enteredCode === correctCode) {
+                window.location.href = "Main.html"; // Change next_page.html to your desired next page
+            } else {
+                alert("Incorrect code. Please try again later.");
+            }
+        }
+    </script>
+      
+      
+      
+    </center>
+
+
+
+
+
+    
+
+
+
+
+
+</body>
+</html>

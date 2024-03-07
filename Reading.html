@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta http-equiv="CONTENT-TYPE" content="text/html; charset=UTF-8">
+  <title> Black Ash Website </title>
+</head>
+<body>
+  <center>
+  <h4> Hello Welcome to Reading and Writing Skills Reviewer!</h4>
+  </center>
+  
+  <form id="Flow">  
+  <p id="Question1"> What the Real Name of Programmer that create of this Application </p>
+  <input type="text" id="Answer1" placeholder="Write your Answer"> <br> <br>
+  <button onclick="Checking()"> Submit </button>
+  <br> <br> <br>
+  
+  </form>
+  
+  <a href="Reading.html"  id="demo"   >NEXT</a>
+  
+  <script>
+  
+  let life=0;
+  function Checking () {
+    
+    let Question1 = document.getElementById("Answer1").value;
+    
+    
+    let list = document.getElementById("Flow");
+    
+        
+  
+    if (Question1 === "Ash") {
+      life++;
+      alert("Correct");
+      
+            alert("your knowledge is : " + life );
+      
+  alert(" Next ");
+      
+      document.write(list.innerHTML);
+  
+  
+  
+      
+      
+      
+    }else {
+      life--;
+      
+      alert ("incorect");
+            document.write(life);
+    }
+    
+ }
+  
+    
+
+  
+  
+  
+  
+  </script>
+  
+  
+  
+
+
+
+  
+</body>
+
+
+
+
+
+
+
+</html>
